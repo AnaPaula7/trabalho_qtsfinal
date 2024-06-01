@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'slider_section.html' %}
+
+{% include 'criarturmas.html' %}
+  
+{% include 'sobre.html' %}
+  <!-- end treatment section -->
+
+<!-- team section -->
+{% include 'professor.html' %}
+<!-- end team section -->
+
+  <!-- client section -->
+{% include 'depoimentos.html' %}
+  <!-- end client section -->
+
+  <!-- contact section -->
+{% include 'contato.html' %}
+  <!-- end contact section -->
+
+  <!-- info section -->
+{% include 'info.html' %}
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+{% include 'footer.html' %}
+  <!-- footer section -->
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horários</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <style>
+      th {
+        background-color: #c61700ea;
+        color: #ffffff;
+      }
+      td, th {
+        text-align: center;
+      }
+      h3 {
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 20px;
+      }
+      .btn-container {
+        text-align: right;
+        margin-top: 20px;
+      }
+      .btn-container .btn {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Quadro de Trabalho Semanal</h3>
+      {% for matriz in montar_matriz.values %}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            {% for header in matriz.0 %}
+            <th>{{ header }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for linha in matriz %}
+          {% if not forloop.first %}
+          <tr>
+            {% for celula in linha %}
+            <td>{{ celula }}</td>
+            {% endfor %}
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endfor %}
+    </div>
+    {% if montar_matriz %}
+    <div class="container btn-container">
+      <button onclick="window.print()" class="btn btn-primary">Imprimir</button>
+      <button onclick="window.close()" class="btn btn-secondary">Cancelar</button>
+    </div>
+    {% endif %}
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>
